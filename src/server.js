@@ -10,26 +10,28 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const server = createServer()
 
+server.get('/favicon.ico', (req, res) => res.status(204));
+
 server.get('*', async (req, res) => {
     try {
-
         const renderer = vueServerRenderer.createRenderer({
             template: fs.readFileSync(
-                path.join(__dirname, './index.template.html'),
+                path.join(__dirname, '../index.template.html'),
                 'utf-8'
             )
         })
 
-        const context = {
+        const rendererContext = {
             title: 'Vue SSR'
         }
 
-        const appContext = {
-            someContextText: 'someContextText'
+        const context = {
+            url: req.url
         }
 
-        const app = createApp(appContext)
-        const rendered = await renderer.renderToString(app, context)
+        const app = await createApp(context)
+
+        const rendered = await renderer.renderToString(app, rendererContext)
 
         res.end(rendered)
     } catch (e) {

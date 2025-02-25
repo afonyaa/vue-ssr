@@ -1,5 +1,8 @@
 import initApp from './app'
 
-const { app } = initApp()
+const { app, router } = initApp()
 
-app.$mount('#app')
+// попробовать без router on ready
+router.onReady(() => {
+    app.$mount('#app')
+})
