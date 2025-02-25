@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-function createApp(context) {
+function init(context) {
     const app = new Vue({
         render: h => h('div', 'testing')
     })
@@ -8,4 +8,4 @@ function createApp(context) {
     return { app }
 }
 
-export default createApp 
+export default init 

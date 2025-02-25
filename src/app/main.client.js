@@ -1,5 +1,5 @@
-import createApp from './app'
+import initApp from './app'
 
-const { app } = createApp()
+const { app } = initApp()
 
 app.$mount('#app')

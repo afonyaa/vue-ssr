@@ -1,7 +1,7 @@
-import createApp from './app.js'
+import initApp from './app.js'
 
 export default function (context) {
-    const { app } = createApp(context)
+    const { app } = initApp(context)
 
     return app
 }

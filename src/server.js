@@ -29,7 +29,6 @@ server.get('*', async (req, res) => {
         }
 
         const app = createApp(appContext)
-
         const rendered = await renderer.renderToString(app, context)
 
         res.end(rendered)
