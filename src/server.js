@@ -1,8 +1,14 @@
-const vueServerRenderer = require('vue-server-renderer')
-const fs = require('fs')
-const server = require('express')()
-const path = require('path')
-const createApp = require('./main.client')
+
+import vueServerRenderer from 'vue-server-renderer'
+import fs from 'fs'
+import createServer from 'express'
+import path from 'path'
+import createApp from './app/app.js'
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const server = createServer()
 
 server.get('*', async (req, res) => {
     try {
@@ -22,7 +28,7 @@ server.get('*', async (req, res) => {
             someContextText: 'someContextText'
         }
 
-        const app = createApp(appContext)
+        const { app } = createApp(appContext)
 
         const rendered = await renderer.renderToString(app, context)
 
