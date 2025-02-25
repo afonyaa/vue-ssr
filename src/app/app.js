@@ -1,6 +1,6 @@
 import Vue from 'vue'
 
-function createApp(appContext) {
+function createApp(context) {
     const app = new Vue({
         render: h => h('div', 'testing')
     })

@@ -3,7 +3,7 @@ import vueServerRenderer from 'vue-server-renderer'
 import fs from 'fs'
 import createServer from 'express'
 import path from 'path'
-import createApp from './app/app.js'
+import createApp from './app/main.server.js'
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -28,7 +28,7 @@ server.get('*', async (req, res) => {
             someContextText: 'someContextText'
         }
 
-        const { app } = createApp(appContext)
+        const app = createApp(appContext)
 
         const rendered = await renderer.renderToString(app, context)
 
