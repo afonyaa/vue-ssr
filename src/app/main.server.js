@@ -11,9 +11,9 @@ export default function (context) {
             if (router.getMatchedComponents().length === 0) {
                 reject({ code: 404 })
             }
+            resolve(app)
         })
 
-        resolve(app)
     })
 
 }

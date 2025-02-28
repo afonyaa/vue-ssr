@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:server": "webpack --config webpack.server.js",
+    "build:ssr": "webpack --config webpack.server.js",
     "serve": "node src/server.js"
   },
   "keywords": [],
